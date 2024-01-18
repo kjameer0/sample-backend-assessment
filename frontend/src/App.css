@@ -1,0 +1,148 @@
+
+html, body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.App {
+  background-color: #FF9BD2;
+  height: 100%;
+}
+
+.navbar {
+  text-align: center;
+  background-color: #F8F4EC;
+
+}
+
+.navbar section {
+  border-bottom: solid rgb(173, 173, 173);
+}
+
+.navbar-main-section {
+  /* background-color: blue; */
+}
+
+.navbar-sub-section {
+  display: flex;
+  flex-direction: row;
+  /* background-color: red; */
+  text-align: left;
+  /* padding-left: 5px; */
+  height: fit-content;
+}
+
+.navbar-sub-section p {
+  margin-left: 5px;
+  font-size: 8px;
+  font-weight: 200;
+}
+
+.footer {
+  background-color: #F8F4EC;
+  text-align: center;
+  height: fit-content;
+
+  
+  /* position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0; */
+  
+}
+.footer-title {
+  font-size: 20px;
+}
+.footer-copyright {
+  font-size: 8px;
+  font-weight: 200;
+  margin-bottom: 15px;
+}
+
+.footer-section {
+  /* width: 50px; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.footer-section div h1 {
+  font-size: 15px;
+}
+
+.footer-ul li {
+  /* text-decoration: none; */
+  list-style: none;
+}
+
+
+.anime-index {
+  height: 500px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.anime-main {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.new-anime-form {
+  background: #F8F4EC;
+  margin-top: 20px;
+  border: solid 1px black;
+  box-shadow: -10px 10px black;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+
+  height: 180px;
+}
+
+
+.new-anime-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.form-button{
+  /* box-shadow: -1px 1px 1px grey; */
+  background: #D63484;
+  border: solid 1px black;
+  color: black;
+  width: 60px;
+  font-weight: lighter;
+  /* border: none; */
+}
+
+
+
+
+
+
+.index {
+  display: flex;
+  border: solid black;
+  box-shadow: -10px 10px black;
+  width: 60%;
+  height: fit-content;
+  margin: 20px;
+
+  background: #F8F4EC;
+}
+
+
+
+
