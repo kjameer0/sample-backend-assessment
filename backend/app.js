@@ -1,28 +1,34 @@
 // DEPENDENCIES
-const express = require('express');
-const cors = require('cors')
-const animesController = require('./controllers/animesController');
+const createError = require("http-errors");
+const express = require("express");
+const cors = require("cors");
+const {
+    getAllAnimes,
+    getOneAnime,
+    createOneAnime,
+    updateOneAnime,
+    deleteOneAnime,
+  } = require("./queries/animes");
+const animesController = require("./controllers/animesController");
 
 // CONFIGURATION
 const app = express();
 
 // MIDDLEWARE
-app.use(express.json())
-app.use(cors())
+// app.use(express.json())
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // ROUTES
-app.use('/animes', animesController)
-
-app.get("/", (_, res) => {
-    res.send("Welcome to Animania!")
+app.get("/", async (_, res) => {
+  res.send("Welcome to Animania!");
 });
-
+app.use("/animes", animesController);
 
 app.get("*", (_, res) => {
-    res.status(404).send("The request you are looking for doesnt exist!")
-})
-
-
+  res.status(404).send("The request you are looking for doesnt exist!");
+});
 
 // EXPORT
 module.exports = app;
