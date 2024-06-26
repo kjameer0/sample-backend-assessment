@@ -46,6 +46,7 @@ describe("/animes", () => {
       description: "new description",
       id: fakeAnime.id,
     });
+    await db.one("DELETE FROM animes WHERE name='fakeanime3' RETURNING *");
   });
   it("DELETE /animes/:animeId should deleted the provided anime from the database", async () => {
     const fakeAnime = await createOneAnime({

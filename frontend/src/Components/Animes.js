@@ -2,41 +2,37 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Anime from "./Anime";
 
-const API = process.env.REACT_APP_API_URL;
 
 function Animes() {
-    const [animes, setAnimes] = useState([]);
-    useEffect(() => {
-        axios.get(`${API}/animes`).then((response) => {
-            setAnimes(response.data.payload);
-            // console.log(response)
-        }).catch((err) => console.warn("catch", err));
-
-        // fetch()
-    }, []);
-
-    return (
-        <section className="index">
-            {/* <h1>Animes</h1> */}
-            <table className='table'>
-                        <thead>
-                            <tr>
-                                <th>
-                                    Name
-                                </th>
-                                <th>
-                                    Description
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {animes.map((anime) => {
-                                return <Anime anime={anime}/>
-                            })}
-                        </tbody>
-            </table>
-        </section>
-    )
-};
+  //the fetching code will not exist in the actual assessment
+  //fellows will be required to import useState and useEffect to perfomr fetch. Presumably they should use fetch over axios
+  //Question: should components be provided given the time constraints
+  const [animes, setAnimes] = useState([]);
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3001/animes`)
+      .then((response) => {
+        setAnimes(response.data);
+      })
+      .catch((err) => console.warn("catch", err));
+  }, []);
+  return (
+    <section className="index">
+      {/* Add anime list here */}
+      <div>
+        {animes.length > 0 &&
+          animes.map((anime) => {
+            return (
+              <Anime
+                key={crypto.randomUUID()}
+                name={anime.name}
+                description={anime.description}
+              />
+            );
+          })}
+      </div>
+    </section>
+  );
+}
 
 export default Animes;
