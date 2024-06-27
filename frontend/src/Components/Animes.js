@@ -7,6 +7,8 @@ function Animes() {
   //the fetching code will not exist in the actual assessment
   //fellows will be required to import useState and useEffect to perfomr fetch. Presumably they should use fetch over axios
   //Question: should components be provided given the time constraints
+  //what kind of css should they be required to do?
+
   const [animes, setAnimes] = useState([]);
   useEffect(() => {
     axios
@@ -16,6 +18,7 @@ function Animes() {
       })
       .catch((err) => console.warn("catch", err));
   }, []);
+  // empty view
   return (
     <section className="index">
       {/* Add anime list here */}
