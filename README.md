@@ -21,6 +21,7 @@ PG_DATABASE='animes_dev'`
 
 1. `npm install`
 2. `npm run start`
+3. Do not change the structure of the HTML or any of the existing class names
 
 ### Instructions
 

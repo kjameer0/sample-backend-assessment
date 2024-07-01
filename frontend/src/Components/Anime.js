@@ -1,7 +1,7 @@
 function Anime({ name, description }) {
   // console.log(props)
   return (
-    <div>
+    <div className="anime-item">
       <p>{name}</p>
       <p>{description}</p>
     </div>
