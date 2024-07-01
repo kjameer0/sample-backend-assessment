@@ -27,3 +27,6 @@ PG_DATABASE='animes_dev'`
 
 1. In the use `Animes.js` file, fetch a list of all animes from your server
 2. render a list of animes using the Anime component
+
+
+Describe how to use monorepo
