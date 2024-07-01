@@ -3,12 +3,12 @@ const createError = require("http-errors");
 const express = require("express");
 const cors = require("cors");
 const {
-    getAllAnimes,
-    getOneAnime,
-    createOneAnime,
-    updateOneAnime,
-    deleteOneAnime,
-  } = require("./queries/animes");
+  getAllAnimes,
+  getOneAnime,
+  createOneAnime,
+  updateOneAnime,
+  deleteOneAnime,
+} = require("./queries/animes");
 const animesController = require("./controllers/animesController");
 
 // CONFIGURATION

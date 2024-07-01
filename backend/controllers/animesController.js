@@ -25,63 +25,74 @@ function validateAnime(req, res, next) {
 animes.get("/", async (_, res) => {
   try {
     const animes = await getAllAnimes();
+    console.log("hidsh");
     res.status(200).json(animes);
   } catch (error) {
-    res.status(404).json({ payload: error });
+    console.error(error);
+    res.status(500).json({ error: error.message });
   }
 });
 
 // CREATE or POST a new resource. At minimum we need name and description
-animes.post("/new", async (req, res) => {
-  const body = req.body;
-  console.log(body);
-
-  try {
-    // some functionality to create a new anime
-    const newAnime = await createOneAnime(body);
-    res.status(201).json({ payload: newAnime });
-  } catch (error) {
-    res.status(404).json({ payload: error });
-  }
-});
 animes.post("/", async (req, res) => {
-  const body = req.body;
+  const { name, description } = req.body;
   try {
-    const newAnimeRecord = await createOneAnime(body);
+    if (!name || !description) {
+      throw new Error("Invalid user input");
+    }
+    const newAnimeRecord = await createOneAnime(name, description);
     res.status(201).json(newAnimeRecord);
   } catch (error) {
-    res.json({ error: "failed to post" });
+    console.error(error);
+    if (error.message === "Invalid user input") {
+      res.status(400).json({ error: "Invalid user input" });
+    } else {
+      res.status(500).json({ error: "Failed to create new anime." });
+    }
   }
 });
 
 // UPDATE an existing resource
 animes.put("/:animeId", async (req, res) => {
   const { animeId } = req.params;
-  const body = req.body;
-
-  // console.log(`The anime with an id of: ${id}, has been updated with the information provided`)
-
+  const { name, description } = req.body;
   try {
-    // some functionality to update an anime
-    const updatedAnime = await updateOneAnime(animeId, body);
-    res.status(200).json({ payload: updatedAnime });
+    if (!name || !description) {
+      throw new Error("Invalid user input");
+    }
+    const animeFromDb = await getOneAnime(animeId);
+    if (!animeFromDb) {
+      return res
+        .status(404)
+        .json({ error: "No such anime with the provided id exists" });
+    }
+    const updatedAnime = await updateOneAnime(animeId, req.body);
+    res.status(200).json(updatedAnime);
   } catch (error) {
-    res.status(404).json({ payload: error });
+    console.error(error);
+    if (error.message === "Invalid user input") {
+      res.status(400).json({ error: "Invalid user input" });
+    } else {
+      res.status(500).json({ error: "Failed to update anime." });
+    }
   }
 });
 
 // DELETE an individual resource
 animes.delete("/:animeId", async (req, res) => {
   const { animeId } = req.params;
-
-  // console.log(`The anime with an ID of: ${id}, has been deleted`)
-
   try {
-    // some functionality to delete an anime
+    const animeFromDb = await getOneAnime(animeId);
+    if (!animeFromDb) {
+      return res
+        .status(404)
+        .json({ error: "No such anime with the provided id exists" });
+    }
     const deletedAnime = await deleteOneAnime(animeId);
-    res.status(200).json({ payload: deletedAnime });
+    res.status(200).json(deletedAnime);
   } catch (error) {
-    res.status(404).json({ payload: error });
+    console.error(error);
+    res.status(500).json({ error: error.message });
   }
 });
 
