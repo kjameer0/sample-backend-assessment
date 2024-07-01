@@ -1,10 +1,12 @@
 const supertest = require("supertest");
 const app = require("../../app");
-const { createOneAnime } = require("../../queries/animes");
 jest.mock("../../queries/animes.js", () => {
   const actualModule = jest.requireActual("../../queries/animes.js");
   for (const func in actualModule) {
-    actualModule[func] = jest.fn(() => {
+    if (func === "getOneAnime") {
+      continue;
+    }
+    actualModule[func] = jest.fn().mockImplementationOnce(() => {
       throw new Error("Mock server error");
     });
   }
@@ -34,9 +36,28 @@ describe("/animes errors", () => {
     expect(response.statusCode).toBe(500);
   });
 });
-jest.restoreMocks()
-describe('user errors for /animes', () => {
-  it('POST /animes should throw a 400 error if there is not both a name and a description in the request body', async () => {
-    
-  })
-})
+describe("user errors for /animes", () => {
+  it("POST /animes should throw a 400 error if there is not both a name and a description in the request body", async () => {
+    const res = await supertest(app).post("/animes").send({
+      name: "Fake anime",
+    });
+    expect(res.statusCode).toBe(400);
+  });
+  it("PUT /animes should throw a 400 error if there is not both a name and a description in the request body", async () => {
+    const res = await supertest(app).put("/animes/1").send({
+      name: "Fake anime",
+    });
+    expect(res.statusCode).toBe(400);
+  });
+  it("PUT /animes should throw a 404 error if the anime the user is trying to update does not exist", async () => {
+    const res = await supertest(app).put("/animes/100000").send({
+      name: "Fake anime",
+      description: 'new desc.'
+    });
+    expect(res.statusCode).toBe(404);
+  });
+  it("DELETE /animes should throw a 404 error if the anime the user is trying to update does not exist", async () => {
+    const res = await supertest(app).delete("/animes/100000")
+    expect(res.statusCode).toBe(404);
+  });
+});

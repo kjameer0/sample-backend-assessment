@@ -25,7 +25,6 @@ function validateAnime(req, res, next) {
 animes.get("/", async (_, res) => {
   try {
     const animes = await getAllAnimes();
-    console.log("hidsh");
     res.status(200).json(animes);
   } catch (error) {
     console.error(error);

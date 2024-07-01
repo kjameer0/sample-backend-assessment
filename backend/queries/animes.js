@@ -6,7 +6,7 @@ const getAllAnimes = async () => {
 };
 
 const getOneAnime = async (animeId) => {
-  const anime = await db.one("SELECT * FROM animes WHERE id=$1", animeId);
+  const anime = await db.oneOrNone("SELECT * FROM animes WHERE id=$1", animeId);
   return anime;
 };
 
@@ -28,7 +28,10 @@ const updateOneAnime = async (id, body) => {
 };
 
 const deleteOneAnime = async (id) => {
-  const deletedAnime = db.one("DELETE FROM animes WHERE id=$1 RETURNING *", id);
+  const deletedAnime = await db.oneOrNone(
+    "DELETE FROM animes WHERE id=$1 RETURNING *",
+    id
+  );
   return deletedAnime;
 };
 
