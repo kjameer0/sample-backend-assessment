@@ -43,12 +43,12 @@ html, body {
   text-align: center;
   height: fit-content;
 
-  
+
   /* position: fixed;
   bottom: 0;
   left: 0;
   right: 0; */
-  
+
 }
 .footer-title {
   font-size: 20px;
@@ -135,6 +135,7 @@ html, body {
 .index {
   display: flex;
   border: solid black;
+  flex-wrap: wrap;
   box-shadow: -10px 10px black;
   width: 60%;
   height: fit-content;

@@ -20,9 +20,8 @@ function Animes() {
   }, []);
   // empty view
   return (
-    <section className="index">
+    <section className="index" id='anime-list'>
       {/* Add anime list here */}
-      <div>
         {animes.length > 0 &&
           animes.map((anime) => {
             return (
@@ -33,7 +32,6 @@ function Animes() {
               />
             );
           })}
-      </div>
     </section>
   );
 }
