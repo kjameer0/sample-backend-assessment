@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // ROUTES
 app.get("/", async (_, res) => {
-  res.send("Welcome to Animania!");
+  res.send("In Pursuit of Accelerator 2");
 });
 app.use("/animes", animesController);
 
