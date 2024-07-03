@@ -103,8 +103,7 @@ animes.delete("/:animeId", async (req, res) => {
 
 module.exports = animes;
 
-/* Instructions: There are several comments in this file that describe routes you need to write to pass this assessment's test cases. After you have fully set up the project, you should be able to run the npm run test command to run all of the available tests. They should fail at first.
-Read the tests to figure out how the routes should be structured. You can check out /queries/animes.js to import utilities to interact with the database. It's your job to determine how and when to use the provided functions. */
+
 
 //Write a GET route / that responds with a list of all of the animes in the database and a 200 status code.
 

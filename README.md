@@ -1,6 +1,11 @@
 # Accelerator assessment
 
+## Navigating a monorepo
+
+This project is a monorepo, meaning that the frontend and backend are in the same repository. You have to `cd` into `/backend` or `/frontend` in order to `npm install` for both ends of the stack. They each have their own package.json and therefore their own dependencies. The frontend and backend will also need their own .env files. You will not be able to use `npm run start` or other scripts unless you are in the correct folder. `npm run start` will start the `frontend`.
+
 ## Backend
+
 Copy the following into a .env file that you create in your /backend folder
 `PORT=3001
 PG_HOST=localhost
@@ -13,7 +18,7 @@ PG_DATABASE='animes_dev'`
    1. `npm i`
    2. `npm run setup`
    3. `npm run start`
-3. you should be able to open postman see 'In Pursuit of Accelerator 2' when you make a GET request to [http://localhost:3001](http://localhost:3001)
+3. you should be able to open Postman see 'In Pursuit of Accelerator 2' when you make a GET request to [http://localhost:3001](http://localhost:3001)
 
 ### Backend assessment instructions
 
@@ -27,7 +32,7 @@ PG_DATABASE='animes_dev'`
    2. `getOneAnime(animeId)`: returns an anime matching an id if it exists in the database, otherwise it returns null.
    3. `createOneAnime(name, description)`: adds a new anime to the database and returns the data for that new anime if the operation succeeded.
    4. `updateOneAnime(id, body)`: takes an id and a body object containing a name and description and updates the existing anime in the database with the matching id to have the newly provided data
-   5. `deleteOneAnime(id)`:
+   5. `deleteOneAnime(id)`: takes an id and deletes a record from the animes table matching that id
 
 ## Frontend
 
@@ -40,7 +45,7 @@ PG_DATABASE='animes_dev'`
 ### Instructions
 
 1. In the use `Animes.js` file, fetch a list of all animes from your server
-2. render a list of animes using the Anime component
-
-
-Describe how to use monorepo
+   1. You are allowed to use `axios` and `fetch`
+2. render a list of animes in `Animes.js` using the Anime component
+3. There should be at least 4 animes in your database to pass the tests
+4. ![How your UI should look](./Screenshot%202024-07-02%20at%204.52.47%20PM.png "How your UI should look")
