@@ -1,5 +1,4 @@
 # Accelerator Assessment
-<<<<<<< Updated upstream
 
 ## Navigating a Monorepo
 
@@ -10,21 +9,6 @@ This project is a monorepo, meaning that the frontend and backend are in the sam
 Copy the following into a .env file that you create in your /backend folder
 
 ```PORT=3001
-=======
-
-## Backend
-
-Installation of the backend requires
-
-- check for PostgreSQL with `which psql`
-- if `psql not found` install with ` brew install postgresql`
-- this process can be tricky. Check with your coach if thingsa aren't workinglnp
-
-Copy the following into a .env file that you create in your /backend folder
-
-```
-PORT=3001
->>>>>>> Stashed changes
 PG_HOST=localhost
 PG_USER='postgres'
 PG_PORT=5432
