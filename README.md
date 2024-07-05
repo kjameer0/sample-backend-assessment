@@ -48,4 +48,4 @@ PG_DATABASE='animes_dev'`
    1. You are allowed to use `axios` and `fetch`
 2. render a list of animes in `Animes.js` using the Anime component
 3. There should be at least 4 animes in your database to pass the tests
-4. ![How your UI should look](./Screenshot%202024-07-02%20at%204.52.47%20PM.png "How your UI should look")
+4. ![How your UI should look](./ui.png "How your UI should look")

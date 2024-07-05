@@ -9,79 +9,7 @@ const {
 } = require("../queries/animes");
 
 
-// GET all of this resource
-animes.get("/", async (_, res) => {
-  try {
-    const animes = await getAllAnimes();
-    res.status(200).json(animes);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
-});
 
-// CREATE or POST a new resource. At minimum we need name and description
-animes.post("/", async (req, res) => {
-  const { name, description } = req.body;
-  try {
-    if (!name || !description) {
-      throw new Error("Invalid user input");
-    }
-    const newAnimeRecord = await createOneAnime(name, description);
-    res.status(201).json(newAnimeRecord);
-  } catch (error) {
-    console.error(error);
-    if (error.message === "Invalid user input") {
-      res.status(400).json({ error: "Invalid user input" });
-    } else {
-      res.status(500).json({ error: "Failed to create new anime." });
-    }
-  }
-});
-
-// UPDATE an existing resource
-animes.put("/:animeId", async (req, res) => {
-  const { animeId } = req.params;
-  const { name, description } = req.body;
-  try {
-    if (!name || !description) {
-      throw new Error("Invalid user input");
-    }
-    const animeFromDb = await getOneAnime(animeId);
-    if (!animeFromDb) {
-      return res
-        .status(404)
-        .json({ error: "No such anime with the provided id exists" });
-    }
-    const updatedAnime = await updateOneAnime(animeId, req.body);
-    res.status(200).json(updatedAnime);
-  } catch (error) {
-    console.error(error);
-    if (error.message === "Invalid user input") {
-      res.status(400).json({ error: "Invalid user input" });
-    } else {
-      res.status(500).json({ error: "Failed to update anime." });
-    }
-  }
-});
-
-// DELETE an individual resource
-animes.delete("/:animeId", async (req, res) => {
-  const { animeId } = req.params;
-  try {
-    const animeFromDb = await getOneAnime(animeId);
-    if (!animeFromDb) {
-      return res
-        .status(404)
-        .json({ error: "No such anime with the provided id exists" });
-    }
-    const deletedAnime = await deleteOneAnime(animeId);
-    res.status(200).json(deletedAnime);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
-});
 
 /* Instructions: Use the following prompts to write the corresponding routes. **Each** route should be able to catch server-side and user input errors(should they apply). Consult the test files to see how the routes and errors should work.*/
 //Write a GET route that retrieves all animes from the database and sends them to the client with a 200 status code

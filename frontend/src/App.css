@@ -50,41 +50,5 @@ body {
   flex-direction: row;
 }
 
-.new-anime-form {
-  background: #f8f4ec;
-  margin-top: 20px;
-  border: solid 1px black;
-  box-shadow: -10px 10px black;
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
 
-  height: 180px;
-}
 
-.new-anime-form label {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-}
-
-.form-button {
-  /* box-shadow: -1px 1px 1px grey; */
-  background: #d63484;
-  border: solid 1px black;
-  color: black;
-  width: 60px;
-  font-weight: lighter;
-  /* border: none; */
-}
-
-.index {
-  display: flex;
-  border: solid black;
-  flex-wrap: wrap;
-  box-shadow: -10px 10px black;
-  width: 60%;
-  height: fit-content;
-  margin: 20px;
-  background: #f8f4ec;
-}
